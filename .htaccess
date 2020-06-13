@@ -1,6 +1,6 @@
 Options -Indexes
 
-<Files ~ "\.(env|json|config.js|md|gitignore|gitattributes|lock)$">
+<Files ~ "\.(env|json|config.js|md|gitignore|gitattributes|lock|ftpconfig)$">
     Order allow,deny
     Deny from all
 </Files>
