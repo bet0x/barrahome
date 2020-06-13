@@ -1,3 +1,7 @@
+# Este repositorio es el motor de https://www.barrahome.org/ 
+
+La tecnologia utilizada aqui puede ser vista, copiada o reutilizada. El codigo de esta sigue el mismo que el desarrollador de Arcane utiliza para sus distintos sitios. 
+
 ## Arcane Blog
 
 A really simple flat-file blog that uses markdown for formatting. Perfect for personal sites or those who want to get into Arcane.
