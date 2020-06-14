@@ -1,6 +1,8 @@
 # Este repositorio es el motor de https://www.barrahome.org/ 
 
-La tecnologia utilizada aqui puede ser vista, copiada o reutilizada. El codigo de esta sigue el mismo que el desarrollador de Arcane utiliza para sus distintos sitios. 
+La tecnología utilizada aquí puede ser vista, copiada o reutilizada. El código de esta sigue el mismo que el desarrollador de Arcane utiliza para sus distintos sitios.
+
+En el caso de tener dudas, seguir la documentación original del autor o escribirme utilizando mi [formulario de contacto.](https://www.barrahome.org/contacto/)
 
 ## Arcane Blog
 
