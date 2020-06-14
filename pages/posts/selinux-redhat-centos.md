@@ -21,15 +21,15 @@ Este se compone por:
         system_u:object_r:home_user_t:s0**
         system_u:system_r:httpd_t:s0
 
-Para poder saber el contexto de *algo* por lo general agregamos al comando la opcion **-Z**
+Para poder saber el contexto de *algo* por lo general agregamos al comando la opcion *-Z*
 
-Ejemplo de salida para **ls -Z**:
+Ejemplo de salida para *ls -Z*:
 
         [alberto@oficina public_blog]$ ls -Z
         unconfined_u:object_r:user_home_t:s0 barrahome
         [alberto@oficina public_blog]$
 
-Ejemplo de salida para **ps fax -Z**:
+Ejemplo de salida para *ps fax -Z*:
 
         system_u:system_r:httpd_t:s0     2390 ?        Ss     0:00 nginx: master process /usr/sbin/nginx -c /etc/nginx/nginx.conf
         system_u:system_r:httpd_t:s0     2391 ?        S      0:00  \_ nginx: worker process
