@@ -17,7 +17,7 @@ if(!function_exists('mb_substr')) {
   }
 }
 
-return function($string, $limit = 150, $suffix = '...') {
+return function($string, $limit = 100, $suffix = '...') {
   if(mb_strlen($string) <= $limit) {
     return $string;
   } else {

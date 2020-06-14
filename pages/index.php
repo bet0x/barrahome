@@ -36,7 +36,7 @@ if(path(1) == 'post') {
       <time><?= date('M j, Y', $post['modified']); ?></time>
       <time><?= $readtime($post['content']); ?></time>
       <?php $link = path("/post/{$post['slug']}/"); ?>
-      <?= $markdown($truncate($post['content'], 200, "...&nbsp;[continuar]($link)"), [
+      <?= $markdown($truncate($post['content'], 250, "...&nbsp;[continuar]($link)"), [
         $post['head'] => preg_replace($regex, "$1 [$2]($link)", $post['head'], 1)
       ]); ?>
     </article>
