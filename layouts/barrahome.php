@@ -37,7 +37,7 @@
       <?= CONTENT; ?>
       <footer>
         <p>Copyright <a href="https://www.barrahome.org/">Alberto Ferrer</a> - &copy; 2001 - <?= date('Y'); ?></p>
-        <p>Built with <a href="https://arcane.dev" target="_blank">Arcane</a></p>
+        <p>Built with <a href="https://arcane.dev" target="_blank">Arcane</a> - <a href="https://github.com/bet0x/barrahome" target="_blank">Code</a></p>
       </footer>
     </section>
     <?= SCRIPTS; ?>
