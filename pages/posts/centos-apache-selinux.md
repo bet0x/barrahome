@@ -1,6 +1,6 @@
 # Centos , Apache, SELinux
 
-Guia rapida de como habilitar SELinux con Apache en Centos 7/8 utilizando directorio personal y otros caracteristicas.
+Guía rápida de como habilitar SELinux con Apache en Centos 7/8 utilizando directorio personal y otros características. Esto es ciertamente muy básico pero útil y practico. Tener en cuenta que hay pasos los cuales me salte dado que cualquiera leyendo esto tiene una noción básica de lo que estoy escribiendo.
 
 Luego de instalar Apache con dnf o yum pasamos a permitir Apache con el siguiente comando:
 
