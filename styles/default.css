@@ -242,24 +242,6 @@ footer > p {
   color: var(--HEXA);
 }
 
-form {
-  margin-top: 20px;
-}
-
-form > * {
-  display: block;
-}
-
-form > *:not(button) {
-  width: 100%;
-  max-width: 400px;
-  margin-top: 5px;
-}
-
-form > button {
-  margin-top: 20px;
-}
-
 @media screen and (max-width: 900px) {
   section {
     max-width: 640px;

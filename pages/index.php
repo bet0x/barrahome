@@ -1,7 +1,5 @@
 <?php
 
-$regex = "/^[\s]*(\#{1,6})\s+(.+)$/";
-
 if(path(1) == 'post') {
   $posts = array_column($posts, null, 'slug');
   $post = $posts[path(2)];
@@ -10,8 +8,8 @@ if(path(1) == 'post') {
     ['post', array_keys($posts)]
   ]);
 
-  if(preg_match($regex, $post['head'], $title)) {
-    relay('TITLE', $title[2]);
+  if(array_key_exists('title', $post)) {
+    relay('TITLE', trim(ltrim($post['title'], "#")));
   }
 } else {
   $pages = $paginate($posts, 5);
@@ -26,8 +24,10 @@ if(path(1) == 'post') {
 
 <?php if(isset($post)) { ?>
   <article>
-    <time><?= date('M j, Y', $post['modified']); ?></time>
-    <time><?= $readtime($post['content']); ?></time>
+    <time>
+      <span><?= date('M j, Y', $post['modified']); ?></span>
+      <span><?= $readtime($post['content']); ?></span>
+    </time>
     <?= $markdown($post['content']); ?>
     <div id="disqus_thread"></div>
     <script>
@@ -48,17 +48,26 @@ if(path(1) == 'post') {
     (d.head || d.body).appendChild(s);
     })();
     </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>    
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>     
   </article>
 <?php } else { ?>
   <?php foreach($posts as $post) { ?>
     <article>
-      <time><?= date('M j, Y', $post['modified']); ?></time>
-      <time><?= $readtime($post['content']); ?></time>
+      <time>
+        <span><?= date('M j, Y', $post['modified']); ?></span>
+        <span><?= $readtime($post['content']); ?></span>
+      </time>
       <?php $link = path("/post/{$post['slug']}/"); ?>
-      <?= $markdown($truncate($post['content'], 250, "...&nbsp;[continuar]($link)"), [
-        $post['head'] => preg_replace($regex, "$1 [$2]($link)", $post['head'], 1)
-      ]); ?>
+      <?php if(array_key_exists('title', $post)) { ?>
+        <?php $regex = "/^[\s]*(\#+)\s+(.+)$/"; ?>
+        <?= $markdown([
+          preg_replace($regex, "$1 [$2]($link)", $post['title'])
+        ]); ?>
+      <?php } ?>
+      <p><?= implode('&nbsp;', [
+        $truncate(strip_tags($markdown($post['preview'])), 180),
+        $anchor('continue', $link)
+      ]); ?></p>
     </article>
   <?php } ?>
   <?php if(count($pages) > 1) { ?>
@@ -66,7 +75,7 @@ if(path(1) == 'post') {
     <aside>
       <?php if($pages[$prev = $path - 1] ?? false) { ?>
         <?php $link = path($prev == 1 ? '/' : "/page/{$prev}/"); ?>
-        <a href="<?= $link; ?>">&larr;</a>
+        <?= $anchor('&larr;', $link); ?>
       <?php } else { ?>
         <span>&larr;</span>
       <?php } ?>
@@ -76,12 +85,12 @@ if(path(1) == 'post') {
             <span><?= $page; ?></span>
           <?php } else { ?>
             <?php $link = path($page == 1 ? '/' : "/page/{$page}/"); ?>
-            <a href="<?= $link; ?>"><?= $page; ?></a>
+            <?= $anchor($page, $link); ?>
           <?php } ?>
         <?php } ?>
       </nav>
       <?php if($pages[$next = $path + 1] ?? false) { ?>
-        <a href="<?= path("/page/{$next}/"); ?>">&rarr;</a>
+        <?= $anchor('&rarr;', path("/page/{$next}/")); ?>
       <?php } else { ?>
         <span>&rarr;</span>
       <?php } ?>
