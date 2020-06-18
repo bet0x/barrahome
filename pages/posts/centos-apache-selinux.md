@@ -11,16 +11,16 @@ Si quieren saber que otras opciones existen en el contexto de httpd pueden ejecu
 
 Luego procedemos a crear nuestro directorio:
 
-    mkdir public_html
-    chmod 0755 public_html
+		mkdir public_html
+		chmod 0755 public_html
 
 En el caso de que se requiera hacer operaciones de lectura/escritura debemos permitir nuestra carpeta con este otro comando:
 
-	  chcon -Rv --type=httpd_sys_rw_content_t /home/usuario/public_html
+		chcon -Rv --type=httpd_sys_rw_content_t /home/usuario/public_html
 
 En el caso de que busquemos solo lectura (servir archivos y no nos funcione nuestro public_html):
 
-	  chcon -t httpd_sys_content_t /home/usuario/public_html
+		chcon -t httpd_sys_content_t /home/usuario/public_html
 
 Creamos nuestro vhost:
 
