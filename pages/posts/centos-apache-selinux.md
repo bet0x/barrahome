@@ -5,7 +5,8 @@ Guia rapida de como habilitar SELinux con Apache en Centos 7/8.
 Luego de instalar Apache con dnf o yum pasamos a permitir Apache con el siguiente comando:
 
     sudo setsebool -P httpd_can_network_connect 1
-
+    sudo setsebool -P httpd_enable_homedirs 1
+		
 Si quieren saber que otras opciones existen en el contexto de httpd pueden ejecutar esta variante:
     sudo getsebool -a | grep "httpd_can"
 
