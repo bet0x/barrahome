@@ -37,7 +37,7 @@ return function($collection) {
   } else {
   	$json_cache = file_get_contents($cache); //locally
   }
-  $jsonobject = new SimpleXMLElement($json_cache);
-  return $jsonobject;
+  //$jsonobject = new SimpleXMLElement($json_cache);
+  return $json_cache;
 };
 ?>
