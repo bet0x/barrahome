@@ -5,7 +5,7 @@
 return function($collection) {
   $remote           = env("DIRECTUS_REMOTE");
   $token            = env("DIRECTUS_TOKEN");
-  $url 			        = "https://.$remote./api/collections/get/.$collection.?token=".$token; // json source
+  $url 			        = "https://$remote./api/collections/get/$collection?token=".$token; // json source
   $cache 			      = "pages/collections/".$collection.".json"; // make this file in same dir
   $force_refresh	 	= true; // dev
   $refresh		      = 60*60; // once an hour
