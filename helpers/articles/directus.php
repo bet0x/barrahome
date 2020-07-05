@@ -7,10 +7,9 @@ return function($collection) {
   $token            = env("DIRECTUS_TOKEN");
   $url 			        = "https://.$remote./api/collections/get/.$collection.?token=".$token; // json source
   $cache 			      = "pages/collections/".$collection.".json"; // make this file in same dir
-  $force_refresh	 	= false; // dev
+  $force_refresh	 	= true; // dev
   $refresh		      = 60*60; // once an hour
-
-  // cache json results so to not over-query (api restrictions)
+    // cache json results so to not over-query (api restrictions)
   if ($force_refresh || ((time() - filectime($cache)) > ($refresh) || 0 == filesize($cache))) {
 
   	// read json source
