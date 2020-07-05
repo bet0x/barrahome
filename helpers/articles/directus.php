@@ -1,10 +1,10 @@
 <?
 // add example
-// $remote = experimentos.barrahome.org
 // $collection = Articulos
-// $token = 4951bd87c7863ff012690ee92feb65
 
-return function($remote, $collection, $token) {
+return function($collection) {
+  $remote           = env("DIRECTUS_REMOTE");
+  $token            = env("DIRECTUS_TOKEN");
   $url 			        = "https://.$remote./api/collections/get/.$collection.?token=".$token; // json source
   $cache 			      = "pages/collections/".$collection.".json"; // make this file in same dir
   $force_refresh	 	= false; // dev
