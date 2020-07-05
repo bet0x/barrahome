@@ -19,7 +19,8 @@
         <?= $anchor('BarraHome.org [~]$', path('/')); ?>
         <nav>
           <?php foreach([
-            'Inicio' => '/'
+            'Index' => '/',
+            'About' => '/about'
           ] as $text => $link) { ?>
             <?= $anchor($text, path($link), [
               'class' => $if(trim($link, '/') == path(1), 'current')
