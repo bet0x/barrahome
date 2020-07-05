@@ -1,4 +1,4 @@
-<html lang="es-MX">
+<html lang="<?= LOCALE['CODE'] ?>">
   <head>
     <meta charset="utf-8"/>
     <meta name="description" content="Tecnología, open source, seguridad y mas.">
