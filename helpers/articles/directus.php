@@ -7,11 +7,10 @@ return function($collection) {
   $token            = env("DIRECTUS_TOKEN");
   $url 			        = "https://$remote./api/collections/get/$collection?token=".$token; // json source
   $cache 			      = "pages/collections/".$collection.".json"; // make this file in same dir
-  $force_refresh	 	= true; // dev
+  $force_refresh	 	= false; // dev
   $refresh		      = 60*60; // once an hour
     // cache json results so to not over-query (api restrictions)
   if ($force_refresh || ((time() - filectime($cache)) > ($refresh) || 0 == filesize($cache))) {
-  echo $url;
   	// read json source
   	$ch = curl_init($url) or die("curl issue");
   	$curl_options = array(
@@ -37,7 +36,6 @@ return function($collection) {
   } else {
   	$json_cache = file_get_contents($cache); //locally
   }
-  //$jsonobject = new SimpleXMLElement($json_cache);
   return $json_cache;
 };
 ?>
