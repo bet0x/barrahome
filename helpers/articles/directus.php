@@ -11,7 +11,7 @@ return function($collection) {
   $refresh		      = 60*60; // once an hour
     // cache json results so to not over-query (api restrictions)
   if ($force_refresh || ((time() - filectime($cache)) > ($refresh) || 0 == filesize($cache))) {
-
+  echo $url;
   	// read json source
   	$ch = curl_init($url) or die("curl issue");
   	$curl_options = array(
