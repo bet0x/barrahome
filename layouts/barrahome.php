@@ -22,7 +22,7 @@
             'Index' => '/',
             'About' => '/about'
           ] as $text => $link) { ?>
-            <?= $anchor($text, path($link), [
+            <?= $anchor(scribe($text), path($link), [
               'class' => $if(trim($link, '/') == path(1), 'current')
             ]); ?>
           <?php } ?>
