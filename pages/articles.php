@@ -1,6 +1,6 @@
 <?php
 if(path(1) == 'articles') {
-  var_dump($directus('Articulos'));
+  //var_dump($directus('Articulos'));
 }
 
 ?>
