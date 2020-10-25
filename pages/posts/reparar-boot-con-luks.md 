@@ -1,0 +1,50 @@
+# Reparar Boot con Luks
+
+Una de las últimas novedades que me han ocurrido utilizando Luks es actualizar un Kernel o ejecutar dist-upgrade en Ubuntu 20 y perder la configuración de Grub junto con mi crypto setup.
+
+Para eso podemos ejecutar lo siguiente y recuperar nuestra particion y volver a iniciar sin problemas. 
+
+Esto también puede ser aplicado para cuando instalamos Microsoft Windows luego de tener un sistema con Ubuntu ya funcional o cualquier variante de Linux.
+
+
+    cryptsetup luksOpen /dev/sdb3 home_sdb3
+    vgchange -ay
+    lvscan
+    mkdir /media/linux
+    mount /dev/ubuntu-vg/root /media/linux/
+    mount -o bind /proc /media/linux/proc
+    mount -o bind /dev /media/linux/dev
+    mount -o bind /sys /media/linux/sys
+    chroot /media/linux /bin/bash
+
+    > fdisk -l:
+
+    Disk /dev/sdb: 238.5 GiB, 256060514304 bytes, 500118192 sectors
+    Units: sectors of 1 * 512 = 512 bytes
+    Sector size (logical/physical): 512 bytes / 512 bytes
+    I/O size (minimum/optimal): 512 bytes / 512 bytes
+    Disklabel type: gpt
+    Disk identifier: ED00E611-2AA0-40CB-BA69-97B8FAD3303E
+
+    Device       Start       End   Sectors   Size Type
+    /dev/sdb1     2048   1050623   1048576   512M EFI System
+    /dev/sdb2  1050624   2050047    999424   488M Linux filesystem
+    /dev/sdb3  2050048 500117503 498067456 237.5G Linux filesystem
+
+    mount /dev/sdb2 /boot
+    mount /dev/sdb1 /boot/efi
+
+    grub-install /dev/sdb
+    **OR** grub-update
+
+    umount /boot/efi
+    umount /boot
+    exit
+
+    umount /media/linux/boot/efi
+    umount /media/linux/boot
+    umount -l /media/linux
+    vgchange -an
+    cryptsetup luksClose home_sdb3
+
+Como veran esto aplica a LVM. Modificar los comandos o simplemente la variante correspondiente.
