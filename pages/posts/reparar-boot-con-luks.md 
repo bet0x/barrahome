@@ -6,6 +6,7 @@ Para eso podemos ejecutar lo siguiente y recuperar nuestra particion y volver a 
 
 Esto también puede ser aplicado para cuando instalamos Microsoft Windows luego de tener un sistema con Ubuntu ya funcional o cualquier variante de Linux.
 
+## Pasos a seguir:
 
     cryptsetup luksOpen /dev/sdb3 home_sdb3
     vgchange -ay
